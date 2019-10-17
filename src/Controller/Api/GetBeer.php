@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller\Api;
 
 use App\Entity\Beer;
+use App\Entity\IsoCountryCodes;
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\QueryBuilder;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
@@ -68,7 +69,7 @@ class GetBeer extends AbstractFOSRestController
                             case 'brewer':
                             case 'type':
                             case 'country':
-                                $expr->add($qb->expr()->eq("b.$field", '\'' . $value . '\''));
+                                $expr->add($qb->expr()->eq("b.$field", '\'' . (IsoCountryCodes::getCountries()[$value]) . '\''));
                                 break;
                             case 'price_from':
                                 $expr->add($qb->expr()->gte('b.price', $value));
