@@ -1,4 +1,6 @@
 #info
+first do composer install then set correct config for DB connection and
+
 to import run bin/console import command
 
 after launching dev server you can access api endpoints as 
